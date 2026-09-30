@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Сайт для «Чукасан»: рынок, конкуренты и прототип</title>
+<meta name="description" content="Разбор ниши и конкурентов и прототип сайта для «Чукасан» в Джанкое.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#FFF8E7;
+    --surface:#FFFFFF;
+    --ink:#2B2320;
+    --ink-soft:#5E5148;
+    --line:#EBD9A6;
+    --accent:#B8231B;
+    --accent-soft:#FBE7A8;
+    --on-accent:#FFFFFF;
+    --font-display:'Montserrat',system-ui,sans-serif;
+    --font-body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:500 17px/1.65 var(--font-body);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px 80px}
+  a{color:var(--accent)}
+  h1,h2,h3{font-family:var(--font-display);font-weight:800;color:var(--ink);text-wrap:balance;margin:0}
+  p{margin:0 0 12px}
+
+  .top{padding:64px 0 36px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+  .top h1{font-size:clamp(30px,5vw,44px);line-height:1.12;max-width:20ch}
+  .lead{font-size:19px;color:var(--ink-soft);max-width:60ch;margin:18px 0 0}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .meta span{font-size:13.5px;padding:5px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--ink-soft)}
+  .meta b{color:var(--ink);font-weight:700}
+
+  .toc{display:flex;flex-wrap:wrap;gap:6px 18px;padding:18px 0;border-bottom:1px solid var(--line);font-size:14.5px;font-weight:700}
+  .toc a{text-decoration:none;color:var(--ink-soft)}
+  .toc a:hover{color:var(--accent)}
+
+  section{padding:52px 0 8px}
+  section > h2{font-size:clamp(24px,3.4vw,30px);line-height:1.2;margin-bottom:10px}
+  .sub{color:var(--ink-soft);max-width:62ch;margin-bottom:26px}
+
+  .key{list-style:none;counter-reset:k;padding:0;margin:0;display:grid;gap:2px}
+  .key li{counter-increment:k;display:grid;grid-template-columns:44px 1fr;gap:14px;padding:18px 0;border-top:1px solid var(--line)}
+  .key li:first-child{border-top:0}
+  .key li::before{content:counter(k);font-family:var(--font-display);font-size:26px;line-height:1.1;color:var(--accent)}
+  .key h3{font-family:var(--font-body);font-size:17.5px;font-weight:800;margin-bottom:4px}
+  .key p{color:var(--ink-soft);margin:0}
+
+  .marks{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+  .marks li{position:relative;padding:14px 18px 14px 50px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+  .marks li::before{position:absolute;left:18px;top:15px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700}
+  .marks--plus li::before{content:"✓";background:var(--accent);color:var(--on-accent)}
+  .marks--minus li::before{content:"!";background:var(--accent-soft);color:var(--accent)}
+  .marks q{font-style:italic;quotes:"«" "»"}
+  .src{font-size:13px;color:var(--ink-soft)}
+
+  .rivals{display:grid;gap:14px}
+  .rival{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:grid;gap:10px}
+  .rival__head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 14px}
+  .rival__head h3{font-family:var(--font-body);font-size:17.5px;font-weight:800}
+  .rival__head a{font-size:14px;word-break:break-all}
+  .rival dl{margin:0;display:grid;grid-template-columns:150px 1fr;gap:6px 14px;font-size:15.5px}
+  .rival dt{color:var(--ink-soft)}
+  .rival dd{margin:0}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chips span{font-size:13px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+  .note{font-size:13.5px;color:var(--ink-soft)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+  .box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+  .box h3{font-family:var(--font-body);font-size:16px;font-weight:800;margin-bottom:10px}
+  .box ul{margin:0;padding-left:18px;display:grid;gap:6px;color:var(--ink-soft)}
+
+  .tasks{margin:0;padding-left:22px;display:grid;gap:10px}
+  .tasks li::marker{color:var(--accent);font-weight:700}
+  .blocks{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+  .blocks li{display:grid;grid-template-columns:210px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .blocks b{font-weight:800}
+  .blocks span{color:var(--ink-soft)}
+  .btn{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:14px 24px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-weight:700;text-decoration:none}
+  .btn:hover{filter:brightness(.9)}
+
+  .offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .offer{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+  .offer h3{font-family:var(--font-body);font-size:16.5px;font-weight:800;margin-bottom:6px}
+  .offer p{color:var(--ink-soft);margin:0;font-size:15.5px}
+
+  .questions{margin:0;padding-left:22px;display:grid;gap:10px}
+
+  footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft)}
+  footer p{margin:0 0 6px}
+
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+  @media (max-width:640px){
+    .top{padding-top:40px}
+    .rival dl{grid-template-columns:1fr;gap:2px}
+    .rival dd{margin-bottom:8px}
+    .two{grid-template-columns:1fr}
+    .blocks li{grid-template-columns:1fr;gap:2px}
+  }
+  @media print{
+    body{background:#fff;font-size:12pt}
+    .wrap{max-width:none;padding:0}
+    .toc,.btn{display:none}
+    section{padding-top:24px;break-inside:auto}
+    .rival,.box,.offer,.marks li,.key li{break-inside:avoid}
+    a{color:inherit;text-decoration:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Разбор ниши и прототип сайта</p>
+  <h1>Сайт для «Чукасан»: рынок, конкуренты и прототип</h1>
+  <p class="lead">Мы посмотрели ваши страницы и сайты, где в Джанкое заказывают похожую еду. Здесь выводы, задачи сайта и прототип, собранный под них.</p>
+  <div class="meta">
+    <span>Подготовлено <b>29 сентября 2026</b></span>
+    <span>Разобрано сайтов: <b>3</b></span>
+    <span>Город: <b>Джанкой</b></span>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Разделы">
+  <a href="#glavnoe">Главное</a>
+  <a href="#silnoe">Что уже сильное</a>
+  <a href="#meshaet">Что мешает</a>
+  <a href="#konkurenty">Конкуренты</a>
+  <a href="#zadachi">Задачи сайта</a>
+  <a href="#prototip">Прототип</a>
+  <a href="#offery">Предложения</a>
+  <a href="#voprosy">Вопросы</a>
+</nav>
+
+<section id="glavnoe">
+  <h2>Главное в пяти пунктах</h2>
+  <ol class="key">
+    <li><div><h3>Гости вас уже хвалят</h3><p>На Яндекс Картах рейтинг 5,0 при 63 оценках и 62 отзывах. Сайт может показать это сразу, рядом с меню.</p></div></li>
+    <li><div><h3>Меню у вас широкое</h3><p>Пицца, роллы, шаурма, бургеры, закуски и кофе в одном месте. Это удобно, но на постерах цены трудно сравнить и посчитать заказ.</p></div></li>
+    <li><div><h3>Сейчас заказ принимается по телефону и в ВК</h3><p>Это привычно, но в вечерние часы и в обед линия может быть занята. Онлайн-заказ разгружает телефон.</p></div></li>
+    <li><div><h3>«От 30 минут» — сильное обещание</h3><p>Оно есть на листовке. На сайте его стоит поставить на первый экран, рядом с кнопкой заказа.</p></div></li>
+    <li><div><h3>Заказ к нужному времени</h3><p>Кафе работает с 10:00 до 22:00 каждый день. Гость сможет выбрать время заранее, а кухня будет видеть очередь заказов.</p></div></li>
+  </ol>
+</section>
+
+<section id="silnoe">
+  <h2>Что у вас уже сильное</h2>
+  <p class="sub">Это стоит показать на сайте в первую очередь: выбирают именно по таким вещам.</p>
+  <ul class="marks marks--plus">
+    <li>Высокий рейтинг и живые отзывы. <q>Очень вкусная шаурма. Приготовили быстро.</q> <span class="src">— Eugen Shveth, <a href="https://yandex.ru/maps/org/chukasan/40128188456/reviews/">Яндекс Карты</a>, 29 сентября</span></li>
+    <li>Стабильность. <q>всегда всё свежее, всегда всё вкусное</q> <span class="src">— Максим Балакшин, <a href="https://yandex.ru/maps/org/chukasan/40128188456/reviews/">Яндекс Карты</a>, 9 августа</span></li>
+    <li>Работаете каждый день без перерыва: <q>Ждём Вас каждый день с 10:00 до 22:00. Без перерыва и выходных</q> <span class="src">— описание группы ВКонтакте</span></li>
+    <li>Быстрая доставка и знакомый бренд: <q>Любимая еда — у тебя дома</q> <span class="src">— ваша листовка</span></li>
+    <li>Готовая визуальная основа: логотип, жёлтые постеры с составом и ценами, схема проезда. Всё это можно использовать на сайте.</li>
+  </ul>
+</section>
+
+<section id="meshaet">
+  <h2>Что сейчас мешает получать заявки</h2>
+  <p class="sub">Не ошибки, а места, где человек, готовый заказать, может передумать и уйти.</p>
+  <ul class="marks marks--minus">
+    <li>Заказ можно сделать по телефону или в сообщениях ВК. Онлайн-корзины и выбора времени пока нет.</li>
+    <li>Меню лежит картинками. Чтобы найти нужное блюдо и сложить сумму, приходится листать постеры.</li>
+    <li>В ВК отзывов нет, а 62 отзыва с Яндекс Карт видны только тем, кто зашёл именно туда.</li>
+    <li>Условия доставки (зона, стоимость, минимальная сумма) в открытых источниках не нашли. Гость спрашивает об этом по телефону.</li>
+    <li>Часть сомнений остаётся без ответа: острая ли шаурма, что входит в набор, сколько там штук.</li>
+  </ul>
+</section>
+
+<section id="konkurenty">
+  <h2>Кто ещё работает в нише</h2>
+  <p class="sub">Открыли сайты трёх компаний: двух в Джанкое и одного в Симферополе. Ниже то, что видит человек, который выбирает, где заказать.</p>
+  <div class="rivals">
+    <article class="rival">
+      <div class="rival__head"><h3>Farfor, Джанкой</h3><a href="https://dzhankoy.farfor.ru/">dzhankoy.farfor.ru</a></div>
+      <dl>
+        <dt>Первый экран</dt><dd>«Доставка суши в Джанкое»</dd>
+        <dt>Цены</dt><dd>на сайте</dd>
+        <dt>Заявка</dt><dd>онлайн-корзина, приложение, телефон</dd>
+        <dt>Приёмы</dt><dd><div class="chips"><span>акции</span><span>детское меню</span><span>страница «Доставка и самовывоз»</span></div></dd>
+      </dl>
+    </article>
+    <article class="rival">
+      <div class="rival__head"><h3>Суши Wok, Джанкой</h3><a href="https://dzhankoj.sushiwok.ru/menu/pizza">dzhankoj.sushiwok.ru</a></div>
+      <dl>
+        <dt>Первый экран</dt><dd>«Суши и Роллы Джанкой»</dd>
+        <dt>Цены</dt><dd>на сайте, пицца 25 и 30 см</dd>
+        <dt>Заявка</dt><dd>онлайн-корзина, приложение, телефон</dd>
+        <dt>Приёмы</dt><dd><div class="chips"><span>поиск по меню</span><span>программа лояльности</span><span>аллергены</span></div></dd>
+      </dl>
+    </article>
+    <article class="rival">
+      <div class="rival__head"><h3>SUBANDBURGER · пример из Симферополя</h3><a href="https://subandburger.ru/menu/shaurma">subandburger.ru</a></div>
+      <dl>
+        <dt>Первый экран</dt><dd>«Шаурма с доставкой в Симферополе»</dd>
+        <dt>Цены</dt><dd>на сайте, шаурма от 235 ₽</dd>
+        <dt>Заявка</dt><dd>онлайн-корзина, приложение, телефон</dd>
+        <dt>Приёмы</dt><dd><div class="chips"><span>доставка круглосуточно</span><span>бонусная программа</span><span>страница отзывов</span><span>условия доставки</span></div></dd>
+      </dl>
+    </article>
+  </div>
+  <div class="two">
+    <div class="box">
+      <h3>Что стало нормой</h3>
+      <ul><li>Цены прямо на сайте</li><li>Онлайн-корзина и заказ без звонка</li><li>Отдельная страница условий доставки</li><li>Акции или бонусы</li></ul>
+    </div>
+    <div class="box">
+      <h3>Чего не увидели ни у кого</h3>
+      <ul><li>Заказ к выбранному времени отдельной кнопкой</li><li>Живые отзывы с Яндекс Карт прямо рядом с меню</li><li>Схема «как нас найти» с ориентирами</li></ul>
+    </div>
+  </div>
+  <p class="note">Информация из открытых страниц на 29 сентября 2026. Сайт «Доставка Ёды» (Джанкой) не открылся, поэтому в разбор не вошёл.</p>
+</section>
+
+<section id="zadachi">
+  <h2>Что должен делать ваш сайт</h2>
+  <ol class="tasks">
+    <li>Показывать меню с ценами и размерами сразу, без листания постеров.</li>
+    <li>Принимать заказ онлайн: доставка или самовывоз, сейчас или к нужному времени.</li>
+    <li>Ставить рядом с меню рейтинг 5,0 и настоящие отзывы.</li>
+    <li>Отвечать на вопросы про доставку: время, зона, стоимость.</li>
+    <li>Помогать найти вас: адрес, часы работы, телефон и схема проезда.</li>
+  </ol>
+</section>
+
+<section id="prototip">
+  <h2>Что уже есть в прототипе</h2>
+  <p class="sub">Прототип — черновик структуры: тексты и цены собраны из ваших материалов, фото пока заглушки. В работе все блоки прорабатываются детально.</p>
+  <ul class="blocks">
+    <li><b>Первый экран</b><span>Что, где и как быстро: «от 30 минут», кнопки «Собрать заказ» и «Позвонить».</span></li>
+    <li><b>Цифры доверия</b><span>Рейтинг 5,0, часы работы, скорость доставки. Всё из ваших страниц.</span></li>
+    <li><b>Меню с ценами и корзиной</b><span>Вкладки по разделам, выбор размера, заказ в два касания. Нужен, чтобы гость сам собрал заказ.</span></li>
+    <li><b>Как заказать</b><span>Три шага, включая выбор времени. Снимает страх, что будет сложно.</span></li>
+    <li><b>Фото блюд</b><span>Место под ваши снимки пиццы, роллов и шаурмы.</span></li>
+    <li><b>Отзывы</b><span>Три настоящих отзыва с Яндекс Карт с именами и датами.</span></li>
+    <li><b>Как нас найти</b><span>Адрес, телефон, ВК и место под вашу схему проезда.</span></li>
+  </ul>
+  <a class="btn" href="../prototip/index.html">Открыть прототип →</a>
+</section>
+
+<section id="offery">
+  <h2>Что можно предложить гостям</h2>
+  <p class="sub">Варианты на выбор. Какие из них подходят именно вам, обсудим.</p>
+  <div class="offers">
+    <div class="offer"><h3>Заказ к времени</h3><p>Гость выбирает час, кухня видит очередь. Удобно для обеденного перерыва и вечера.</p></div>
+    <div class="offer"><h3>Комбо на обед</h3><p>Шаурма или бургер плюс напиток одним пунктом. Проще выбирать в середине рабочего дня.</p></div>
+    <div class="offer"><h3>Скидка или подарок за заказ с сайта</h3><p>Небольшой бонус помогает привыкнуть к онлайн-заказу.</p></div>
+  </div>
+</section>
+
+<section id="voprosy">
+  <h2>Что нужно уточнить</h2>
+  <p class="sub">Без этого настоящий сайт не собрать. Ответы можно прислать голосом или списком.</p>
+  <ol class="questions">
+    <li>Какие цены сейчас действуют? В прототипе цены с постеров.</li>
+    <li>Куда и за сколько вы доставляете? Есть ли минимальная сумма заказа?</li>
+    <li>Что означают две цены у шаурмы и донера: острая и не острая или разный размер?</li>
+    <li>Как вам удобнее принимать онлайн-заказы: в мессенджер, на почту или по звонку?</li>
+    <li>Можно ли использовать ваши фотографии блюд и логотип на сайте?</li>
+    <li>Нужен ли заказ к времени, и за сколько минут до нужного часа вы готовы его принимать?</li>
+    <li>Есть ли у вас акции, комбо или бонусы, которые стоит показать?</li>
+  </ol>
+</section>
+
+<footer>
+  <p>Подготовила: Анастасия Абдуллаева</p>
+  <p>Источники: <a href="https://yandex.ru/maps/org/chukasan/40128188456">Яндекс Карты, «Чукасан»</a>, ваши меню и листовка, <a href="https://dzhankoy.farfor.ru/">Farfor</a>, <a href="https://dzhankoj.sushiwok.ru/menu/pizza">Суши Wok</a>, <a href="https://subandburger.ru/menu/shaurma">SUBANDBURGER</a>.</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Чукасан — пицца, роллы, шаурма и бургеры в Джанкое</title>
+<meta name="description" content="Чукасан, Джанкой, ул. Московская, 142. Пицца, роллы, бургеры, шаурма и кофе. Ежедневно с 10:00 до 22:00, доставка от 30 минут.">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light}
+:root{
+  --bg:#FFF8E7; --bg-alt:#FBE7A8; --surface:#FFFFFF;
+  --ink:#2B2320; --ink-soft:#5E5148; --line:#EBD9A6;
+  --accent:#B8231B; --accent-hover:#96190F; --on-accent:#FFFFFF;
+  --yellow:#F2B632; --navy:#2B2320;
+  --radius:14px;
+  --font-display:'Montserrat',system-ui,sans-serif;
+  --font-body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.6 var(--font-body);-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--font-display);font-weight:800;line-height:1.15;margin:0;text-wrap:balance}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.demo-bar{background:var(--bg-alt);color:var(--ink);border-bottom:1px solid var(--line);font-size:13px;text-align:center;padding:8px 14px}
+header.top{position:sticky;top:0;z-index:20;background:var(--yellow);border-bottom:2px solid var(--accent)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px}
+.logo{font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--navy);text-decoration:none;letter-spacing:.02em}
+.logo small{display:block;font:600 10px/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase}
+.top nav{display:flex;gap:18px;font-weight:700;font-size:14.5px}
+.top nav a{color:var(--navy);text-decoration:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:700 15px var(--font-body);text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--accent-hover)}
+.btn--ghost{background:transparent;color:var(--navy);border:2px solid var(--navy)}
+.btn--ghost:hover{background:var(--bg-alt)}
+.cart-btn{position:relative;min-height:42px;padding:0 16px}
+.cart-btn b{background:#fff;color:var(--accent);border-radius:999px;min-width:22px;height:22px;display:inline-grid;place-items:center;font-size:12px}
+
+.ph{margin:0;background:repeating-linear-gradient(45deg,#FBE7A8,#FBE7A8 12px,#F6DB86 12px,#F6DB86 24px);border:2px dashed #B98E1A;border-radius:var(--radius);display:grid;place-items:center;text-align:center;padding:16px;color:#5B4506;font-size:13.5px;min-height:200px}
+.ph::before{content:"📷 Ваше фото: " attr(data-shot);max-width:30ch}
+
+/* ═══ БЛОК: Первый экран — за 5 секунд понятно, что, где и как быстро ═══ */
+.hero{padding:44px 0 36px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+.eyebrow{font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.hero h1{font-size:clamp(32px,5.4vw,52px)}
+.hero p.lead{font-size:18px;color:var(--ink-soft);margin:16px 0 22px;max-width:46ch}
+.hero .ph{min-height:320px}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:28px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+.fact b{display:block;font-family:var(--font-display);font-size:20px}
+.fact span{font-size:14px;color:var(--ink-soft)}
+
+section{padding:52px 0}
+section.alt{background:var(--bg-alt)}
+section h2{font-size:clamp(26px,3.8vw,36px);margin-bottom:8px}
+.sub{color:var(--ink-soft);margin:0 0 24px;max-width:60ch}
+
+/* ═══ БЛОК: Меню и заказ — цены до первого сообщения, корзина ═══ */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 14px;-webkit-overflow-scrolling:touch}
+.tab{flex:none;min-height:42px;padding:0 18px;border-radius:999px;border:2px solid var(--navy);background:transparent;color:var(--navy);font:700 14.5px var(--font-body);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:17px;font-family:var(--font-body);font-weight:800}
+.card p{margin:0;color:var(--ink-soft);font-size:14px;flex:1}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{min-height:36px;padding:0 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);font:700 13.5px var(--font-body);color:var(--ink);cursor:pointer}
+.opt[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:#fff}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:4px}
+.price{font-family:var(--font-display);font-size:20px}
+.add{min-height:40px;padding:0 16px;font-size:14px}
+.fillnote{font-size:13px;color:var(--ink-soft);margin-top:14px}
+.fill{background:#FFE58A;border-radius:4px;padding:0 4px}
+
+/* ═══ БЛОК: Как заказать ═══ */
+.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.steps li{counter-increment:s;background:var(--surface);border-radius:var(--radius);padding:20px;border:1px solid var(--line)}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font:800 16px var(--font-display);margin-bottom:10px}
+.steps b{display:block;margin-bottom:4px}
+.steps span{color:var(--ink-soft);font-size:15px}
+
+/* ═══ БЛОК: Фото блюд ═══ */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+
+/* ═══ БЛОК: Отзывы — настоящие, с Яндекс Карт ═══ */
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.review-real{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.review-real blockquote{margin:0 0 12px;font-size:16px}
+.review-real figcaption{font-size:14px;color:var(--ink-soft)}
+.rating{display:flex;align-items:baseline;gap:10px;margin-bottom:18px}
+.rating b{font:800 40px var(--font-display)}
+
+/* ═══ БЛОК: Как нас найти ═══ */
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.contacts dl{margin:0;display:grid;gap:14px}
+.contacts dt{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--accent)}
+.contacts dd{margin:2px 0 0;font-size:18px;font-weight:700}
+.contacts dd a{color:var(--ink)}
+
+/* корзина */
+.overlay{position:fixed;inset:0;background:rgba(20,28,50,.5);opacity:0;pointer-events:none;transition:opacity .2s;z-index:30}
+.overlay.on{opacity:1;pointer-events:auto}
+.panel{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--surface);z-index:31;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.panel.on{transform:none}
+.panel header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
+.panel header h3{font-size:20px}
+.x{border:0;background:none;font-size:26px;line-height:1;cursor:pointer;color:var(--ink);min-width:44px;min-height:44px}
+.panel .body{flex:1;overflow:auto;padding:16px 20px}
+.line{display:grid;grid-template-columns:1fr auto;gap:4px 10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.line small{color:var(--ink-soft)}
+.qty{display:flex;align-items:center;gap:8px;grid-column:1/-1}
+.qty button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);font-size:18px;cursor:pointer;color:var(--ink)}
+.empty{color:var(--ink-soft);padding:20px 0}
+form.order{display:grid;gap:10px;margin-top:16px}
+form.order label{font-size:13px;font-weight:700;display:grid;gap:4px}
+form.order input,form.order select{min-height:44px;border:1.5px solid var(--line);border-radius:10px;padding:0 12px;font:500 16px var(--font-body);background:#fff;color:var(--ink)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg .opt{min-height:42px;border-radius:10px}
+.panel footer{padding:14px 20px;border-top:1px solid var(--line)}
+.total{display:flex;justify-content:space-between;font:800 18px var(--font-display);margin-bottom:10px}
+.form-done{display:none;background:#E5F3E3;border:1px solid #9CCB97;border-radius:10px;padding:12px;font-size:14.5px;margin-top:10px}
+.form-done.on{display:block}
+
+footer.site{background:var(--yellow);color:var(--ink);padding:36px 0 28px;font-size:14.5px}
+footer.site a{color:var(--ink);font-weight:700}
+footer.site p{margin:0 0 6px}
+.studio{margin-top:18px;padding-top:14px;border-top:1px solid rgba(43,35,32,.3);font-size:14px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+@media (max-width:760px){
+  .top nav{display:none}
+  .hero .wrap,.contacts{grid-template-columns:1fr}
+  .hero .ph{min-height:220px}
+}
+</style>
+</head>
+<body>
+<div class="demo-bar">Демо-прототип для «Чукасан»: тексты собраны из открытых страниц и ваших материалов, фото — заглушки, форма ничего не отправляет</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top">ЧУКАСАН<small>суши и пицца</small></a>
+    <nav aria-label="Разделы">
+      <a href="#menu">Меню</a><a href="#kak">Как заказать</a><a href="#otzyvy">Отзывы</a><a href="#kontakty">Контакты</a>
+    </nav>
+    <button class="btn cart-btn" id="openCart" type="button">Заказ <b id="cnt">0</b></button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Джанкой · ул. Московская, 142</p>
+      <h1>Любимая еда — у вас дома. От 30 минут</h1>
+      <p class="lead">Пицца, роллы, шаурма, бургеры и кофе. Соберите заказ на сайте, выберите доставку или самовывоз — «сейчас» или к нужному времени.</p>
+      <div class="cta">
+        <a class="btn" href="#menu">Собрать заказ</a>
+        <a class="btn btn--ghost" href="tel:+79780834007">Позвонить +7 (978) 083-40-07</a>
+      </div>
+    </div>
+    <figure class="ph" data-shot="запечённые роллы с сырной шапкой и соусом унаги на тёмной тарелке (вертикаль, свет сбоку)"></figure>
+  </div>
+  <div class="wrap facts" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+    <div class="fact"><b>5,0 на Яндекс Картах</b><span>63 оценки, 62 отзыва</span></div>
+    <div class="fact"><b>10:00–22:00</b><span>каждый день, без перерыва и выходных</span></div>
+    <div class="fact"><b>от 30 минут</b><span>быстрая доставка</span></div>
+  </div>
+</section>
+
+<section id="menu" class="alt">
+  <div class="wrap">
+    <h2>Меню с ценами</h2>
+    <p class="sub">Все цены — сразу. Выберите размер, добавьте в заказ, остальное — в корзине.</p>
+    <div class="tabs" role="tablist" aria-label="Разделы меню" id="tabs"></div>
+    <div class="grid" id="grid"></div>
+    <p class="fillnote">Это часть меню, чтобы показать логику. В рабочем сайте — всё меню целиком. Цены взяты с ваших постеров: <span class="fill">проверить актуальность</span>.</p>
+  </div>
+</section>
+
+<section id="kak">
+  <div class="wrap">
+    <h2>Заказ за три шага</h2>
+    <ol class="steps">
+      <li><b>Соберите заказ</b><span>Пицца 25 или 30 см, роллы, шаурма, бургеры, кофе — цена видна сразу.</span></li>
+      <li><b>Выберите способ и время</b><span>Доставка или самовывоз с Московской, 142. Сейчас или к нужному часу с 10:00 до 22:00.</span></li>
+      <li><b>Оставьте телефон</b><span>Заявка придёт в кафе. Зона и стоимость доставки: <span class="fill">уточнить</span>.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Так выглядит ваша еда</h2>
+    <p class="sub">Здесь будут ваши фотографии — те, что вы уже используете в меню и в ВК.</p>
+    <div class="shots">
+      <figure class="ph" data-shot="пицца с курицей, томатами и соусом терияки в крафтовой коробке, вид сверху под углом"></figure>
+      <figure class="ph" data-shot="шаурма с курицей в разрезе на жёлтом фоне, видны овощи"></figure>
+      <figure class="ph" data-shot="сет роллов на тёмной подложке, вид сверху"></figure>
+    </div>
+  </div>
+</section>
+
+<section id="otzyvy">
+  <div class="wrap">
+    <h2>Что говорят гости</h2>
+    <div class="rating"><b>5,0</b><span>на Яндекс Картах, 63 оценки · <a href="https://yandex.ru/maps/org/chukasan/40128188456/reviews/">все отзывы</a></span></div>
+    <div class="reviews">
+      <figure class="review-real"><blockquote>Очень вкусная шаурма. Приготовили быстро. Место хорошее, уютное. Меню компактное, но есть всё чем обычно хочется перекусить в средине рабочего дня. Рекомендую</blockquote><figcaption><b>Eugen Shveth</b> · Яндекс Карты, 29 сентября</figcaption></figure>
+      <figure class="review-real"><blockquote>Являясь постоянным клиентом данного заведения могу сказать только одно, всегда всё свежее, всегда всё вкусное, приготовлено всегда всё с душой, персонал вежливый, общительный все всегда на позитиве.</blockquote><figcaption><b>Максим Балакшин</b> · Яндекс Карты, 9 августа</figcaption></figure>
+      <figure class="review-real"><blockquote>Я заказал шаурму с креветкой, и это было просто восхитительно!</blockquote><figcaption><b>Илья Шабатура</b> · Яндекс Карты, 16 августа</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="kontakty" class="alt">
+  <div class="wrap">
+    <h2>Как нас найти</h2>
+    <div class="contacts">
+      <dl>
+        <div><dt>Адрес</dt><dd>Джанкой, ул. Московская, 142</dd></div>
+        <div><dt>Часы работы</dt><dd>Ежедневно с 10:00 до 22:00</dd></div>
+        <div><dt>Телефон для заказа</dt><dd><a href="tel:+79780834007">+7 (978) 083-40-07</a></dd></div>
+        <div><dt>ВКонтакте</dt><dd><a href="https://vk.ru/chukassan">vk.ru/chukassan</a></dd></div>
+        <div><dt>Доставка</dt><dd>от 30 минут · зона и стоимость: <span class="fill">уточнить</span></dd></div>
+      </dl>
+      <figure class="ph" data-shot="ваша схема «Как нас найти»: ориентир — магазин «Продукты», поворот между домами 126 и 142"></figure>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p><b>Чукасан</b> — суши и пицца, Джанкой, ул. Московская, 142</p>
+    <p>Ежедневно 10:00–22:00 · <a href="tel:+79780834007">+7 (978) 083-40-07</a> · <a href="https://vk.ru/chukassan">ВКонтакте</a></p>
+    <p class="studio">Прототип разработала Анастасия Абдуллаева</p>
+  </div>
+</footer>
+
+<div class="overlay" id="ov"></div>
+<aside class="panel" id="panel" aria-label="Ваш заказ" aria-hidden="true">
+  <header><h3>Ваш заказ</h3><button class="x" id="closeCart" type="button" aria-label="Закрыть">×</button></header>
+  <div class="body">
+    <div id="lines"></div>
+    <form class="order" id="form" novalidate>
+      <div class="seg" role="group" aria-label="Способ получения">
+        <button type="button" class="opt" data-mode="delivery" aria-pressed="true">Доставка</button>
+        <button type="button" class="opt" data-mode="pickup" aria-pressed="false">Самовывоз</button>
+      </div>
+      <div class="seg" role="group" aria-label="Когда">
+        <button type="button" class="opt" data-when="now" aria-pressed="true">Как можно скорее</button>
+        <button type="button" class="opt" data-when="time" aria-pressed="false">К времени</button>
+      </div>
+      <label id="timeBox" hidden>Время (10:00–22:00)<input type="time" id="time" min="10:00" max="22:00" value="13:00"></label>
+      <label>Имя<input id="name" autocomplete="name" placeholder="Как вас зовут"></label>
+      <label>Телефон<input id="phone" type="tel" autocomplete="tel" placeholder="+7 ___ ___-__-__"></label>
+      <label id="addrBox">Адрес доставки<input id="addr" autocomplete="street-address" placeholder="Улица, дом, квартира"></label>
+      <div class="form-done" id="done" role="status">Демо: заявка ничего не отправила. В рабочем сайте она придёт в кафе, а гость увидит подтверждение.</div>
+    </form>
+  </div>
+  <footer>
+    <div class="total"><span>Итого</span><span id="sum">0 ₽</span></div>
+    <button class="btn" id="send" type="button" style="width:100%">Оформить заказ</button>
+  </footer>
+</aside>
+
+<script>
+var MENU = [
+ {id:"pizza",t:"Пицца",items:[
+  {n:"Пепперони",d:"томатный соус, пепперони, моцарелла",o:[["25 см",450],["30 см",620]]},
+  {n:"Ветчина-грибы",d:"ветчина, шампиньоны, грибной соус, моцарелла",o:[["25 см",470],["30 см",680]]},
+  {n:"Терияки",d:"курица жареная, помидор, гавайский соус, зелёный лук, соус терияки, моцарелла",o:[["25 см",520],["30 см",700]]},
+  {n:"Деревенская",d:"помидоры, жареная курица, бекон, соус майонезный, моцарелла, пармезан",o:[["25 см",510],["30 см",750]]},
+  {n:"Четыре сыра",d:"моцарелла, гауда, дор-блю, пармезан, сливочный соус",o:[["25 см",560],["30 см",680]]}
+ ]},
+ {id:"rolls",t:"Роллы",items:[
+  {n:"Маки-ролл с лососем",d:"",o:[["порция",349]]},
+  {n:"Калифорния с крабом",d:"",o:[["порция",379]]},
+  {n:"Филадельфия Light",d:"",o:[["порция",449]]},
+  {n:"Цезарь темпура",d:"",o:[["порция",380]]},
+  {n:"Кайф",d:"набор, 28 шт.",o:[["набор",1250]]},
+  {n:"Маки-сет",d:"набор, 40 шт.",o:[["набор",1350]]}
+ ]},
+ {id:"shawa",t:"Шаурма и бургеры",items:[
+  {n:"Шаурма куриная",d:"",o:[["острая",350],["не острая",330]],chk:1},
+  {n:"Шаурма с говядиной",d:"",o:[["острая",390],["не острая",370]],chk:1},
+  {n:"Шаурма креветка",d:"",o:[["стандарт",360],["XL",410]]},
+  {n:"Биф бургер",d:"сочная говяжья котлета, котлета из сыра моцареллы, овощи и солёные огурцы, фирменный соус в мягкой булочке",o:[["1 шт.",530]]},
+  {n:"Чикен бургер",d:"",o:[["1 шт.",430]]}
+ ]},
+ {id:"snack",t:"Закуски",items:[
+  {n:"Картофель фри",d:"",o:[["порция",180]]},
+  {n:"Барбекю крылья",d:"",o:[["3 шт.",190],["6 шт.",320],["9 шт.",430]]},
+  {n:"Креветка темпура",d:"",o:[["3 шт.",210],["6 шт.",360],["9 шт.",510]]},
+  {n:"Салат «Коул-слоу»",d:"витаминный, 200 г",o:[["порция",120]]}
+ ]},
+ {id:"drink",t:"Кофе и напитки",items:[
+  {n:"Латте",d:"",o:[["маленький",180],["большой",240]]},
+  {n:"Капучино",d:"",o:[["маленький",180],["большой",240]]},
+  {n:"Американо",d:"",o:[["стандарт",120]]},
+  {n:"Лимонад",d:"",o:[["0,4 л",190],["0,5 л",225]]},
+  {n:"Морс",d:"",o:[["0,4 л",145]]}
+ ]}
+];
+var cart={}, cur="pizza", mode="delivery", when="now";
+var $=function(s){return document.querySelector(s)};
+function rub(n){return n.toLocaleString("ru-RU")+"\u00A0₽"}
+function renderTabs(){
+  var h="";MENU.forEach(function(c){h+='<button class="tab" role="tab" data-id="'+c.id+'" aria-selected="'+(c.id===cur)+'">'+c.t+'</button>'});
+  $("#tabs").innerHTML=h;
+}
+function renderGrid(){
+  var cat=MENU.filter(function(c){return c.id===cur})[0],h="";
+  cat.items.forEach(function(it,i){
+    var opts="";it.o.forEach(function(o,j){opts+='<button class="opt" data-i="'+i+'" data-j="'+j+'" aria-pressed="'+(j===0)+'">'+o[0]+' · '+o[1]+'</button>'});
+    h+='<article class="card" data-i="'+i+'"><h3>'+it.n+'</h3><p>'+(it.d||"")+'</p><div class="opts">'+opts+'</div><div class="row"><span class="price">'+rub(it.o[0][1])+'</span><button class="btn add" data-i="'+i+'" type="button">В заказ</button></div></article>';
+  });
+  $("#grid").innerHTML=h;
+}
+function total(){var s=0,c=0;for(var k in cart){s+=cart[k].p*cart[k].q;c+=cart[k].q}return [s,c]}
+function renderCart(){
+  var h="",t=total();
+  for(var k in cart){var l=cart[k];h+='<div class="line"><div><b>'+l.n+'</b><br><small>'+l.o+'</small></div><b>'+rub(l.p*l.q)+'</b><div class="qty"><button data-k="'+k+'" data-d="-1" type="button" aria-label="Меньше">−</button><span>'+l.q+'</span><button data-k="'+k+'" data-d="1" type="button" aria-label="Больше">+</button></div></div>'}
+  $("#lines").innerHTML=h||'<p class="empty">Пока пусто. Добавьте что-нибудь из меню.</p>';
+  $("#sum").textContent=rub(t[0]);$("#cnt").textContent=t[1];
+}
+function openCart(o){$("#panel").classList.toggle("on",o);$("#ov").classList.toggle("on",o);$("#panel").setAttribute("aria-hidden",!o)}
+document.addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;
+  if(b.classList.contains("tab")){cur=b.dataset.id;renderTabs();renderGrid();return}
+  var card=b.closest(".card");
+  if(card&&b.dataset.j!==undefined){
+    card.querySelectorAll(".opt").forEach(function(x){x.setAttribute("aria-pressed",x===b)});
+    var it=MENU.filter(function(c){return c.id===cur})[0].items[+b.dataset.i];
+    card.querySelector(".price").textContent=rub(it.o[+b.dataset.j][1]);return}
+  if(card&&b.classList.contains("add")){
+    var it2=MENU.filter(function(c){return c.id===cur})[0].items[+b.dataset.i];
+    var sel=card.querySelector('.opt[aria-pressed="true"]'),o=it2.o[+sel.dataset.j],key=it2.n+"|"+o[0];
+    if(cart[key])cart[key].q++;else cart[key]={n:it2.n,o:o[0],p:o[1],q:1};
+    renderCart();b.textContent="Добавлено ✓";setTimeout(function(){b.textContent="В заказ"},900);return}
+  if(b.dataset.k){var l=cart[b.dataset.k];l.q+=+b.dataset.d;if(l.q<=0)delete cart[b.dataset.k];renderCart();return}
+  if(b.dataset.mode){mode=b.dataset.mode;document.querySelectorAll("[data-mode]").forEach(function(x){x.setAttribute("aria-pressed",x===b)});$("#addrBox").hidden=(mode==="pickup");return}
+  if(b.dataset.when){when=b.dataset.when;document.querySelectorAll("[data-when]").forEach(function(x){x.setAttribute("aria-pressed",x===b)});$("#timeBox").hidden=(when==="now");return}
+  if(b.id==="openCart"){openCart(true);return}
+  if(b.id==="closeCart"){openCart(false);return}
+  if(b.id==="send"){
+    if(!total()[1]){$("#done").textContent="Сначала добавьте что-нибудь в заказ.";$("#done").classList.add("on");return}
+    $("#done").textContent="Демо: заявка ничего не отправила. В рабочем сайте она придёт в кафе, а гость увидит подтверждение.";$("#done").classList.add("on")}
+});
+$("#ov").addEventListener("click",function(){openCart(false)});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")openCart(false)});
+renderTabs();renderGrid();renderCart();
+</script>
+</body>
+</html>
